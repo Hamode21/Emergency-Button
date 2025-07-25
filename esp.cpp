@@ -13,3 +13,6 @@ void setup_wifi() {
     Serial.print(".");
   }
 }
+PubSubClient client(espClient);
+client.setServer(mqtt_server, 1883);
+client.setCallback(callback); 
