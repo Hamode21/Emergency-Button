@@ -36,3 +36,15 @@ if (buttonPressed && currentState == NORMAL) {
 }
 enum SystemState { NORMAL, EMERGENCY, ACKNOWLEDGED };
 SystemState currentState = NORMAL;
+switch (currentState) {
+  case NORMAL:
+    blinkLedSlow(); // הבהוב איטי כל 10 דקות
+    break;
+  case EMERGENCY:
+    blinkLedFast(); // הבהוב מהיר
+    activateBuzzer(); // Buzzer עולה/יורד
+    break;
+  case ACKNOWLEDGED:
+    turnOffAlerts(); // ממתין לאיפוס מהדף אינטרנט
+    break;
+}
