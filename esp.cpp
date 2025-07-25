@@ -34,3 +34,5 @@ if (buttonPressed && currentState == NORMAL) {
   currentState = EMERGENCY;
   sendAlert(); 
 }
+enum SystemState { NORMAL, EMERGENCY, ACKNOWLEDGED };
+SystemState currentState = NORMAL;
