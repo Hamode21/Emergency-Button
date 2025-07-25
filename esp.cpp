@@ -38,13 +38,21 @@ enum SystemState { NORMAL, EMERGENCY, ACKNOWLEDGED };
 SystemState currentState = NORMAL;
 switch (currentState) {
   case NORMAL:
-    blinkLedSlow(); // הבהוב איטי כל 10 דקות
+    blinkLedSlow(); 
     break;
   case EMERGENCY:
-    blinkLedFast(); // הבהוב מהיר
-    activateBuzzer(); // Buzzer עולה/יורד
+    blinkLedFast(); 
+    activateBuzzer(); 
     break;
   case ACKNOWLEDGED:
-    turnOffAlerts(); // ממתין לאיפוס מהדף אינטרנט
+    turnOffAlerts(); 
     break;
+}
+
+void blinkLedSlow() {
+  if (millis() - previousMillis >= 600000) { 
+    digitalWrite(ledPin, HIGH);
+    delay(100);
+    digitalWrite(ledPin, LOW);
+  }
 }
