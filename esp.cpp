@@ -65,3 +65,8 @@ void sendStatusUpdate() {
   String payload = "{\"device_id\":\"button1\",\"status\":\"" + String(currentState) + "\"}";
   client.publish("emergency/alert", payload.c_str());
 }
+void callback(char* topic, byte* message, unsigned int length) {
+  if (String(topic) == "emergency/control") {
+    if (command == "acknowledge") currentState = ACKNOWLEDGED;
+  }
+}
