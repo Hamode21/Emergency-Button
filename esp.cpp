@@ -16,3 +16,8 @@ void setup_wifi() {
 PubSubClient client(espClient);
 client.setServer(mqtt_server, 1883);
 client.setCallback(callback); 
+void callback(char* topic, byte* message, unsigned int length) {
+  String messageTemp = parseMessage(message, length);
+  if (String(topic) == "emergency/control") {
+      }
+}
