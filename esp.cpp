@@ -43,5 +43,10 @@ void IRAM_ATTR handleButton() {
 void normalBlink() {
     ledState = !ledState;
     digitalWrite(ledPin, ledState);
-    normalBlinkTimer.once(600, normalBlink); // Schedule next blink in 10 minutes
+    normalBlinkTimer.once(600, normalBlink);
 }
+void distressBlink() {
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState);
+}
+
