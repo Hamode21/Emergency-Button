@@ -18,3 +18,10 @@ const int buzzerPin = 18
 // State machine
 enum State { NORMAL, DISTRESS, PENDING };
 State currentState = NORMAL;
+
+// Timing variables
+Ticker normalBlinkTimer;
+Ticker distressBlinkTimer;
+Ticker buzzerTimer;
+bool ledState = false;
+int buzzerFreq = 500;
