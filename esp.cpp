@@ -25,3 +25,8 @@ Ticker distressBlinkTimer;
 Ticker buzzerTimer;
 bool ledState = false;
 int buzzerFreq = 500;
+// WebSocket client
+WebSocketClient wsClient;
+WiFiClient client;
+
+
