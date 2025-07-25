@@ -14,3 +14,7 @@ const char* device_id = "DISTRESS_001";
 const int buttonPin = 4;  
 const int ledPin = 5;     
 const int buzzerPin = 18
+
+// State machine
+enum State { NORMAL, DISTRESS, PENDING };
+State currentState = NORMAL;
