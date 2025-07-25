@@ -21,3 +21,11 @@ void callback(char* topic, byte* message, unsigned int length) {
   if (String(topic) == "emergency/control") {
       }
 }
+
+void IRAM_ATTR buttonInterrupt() {
+  buttonPressed = true; // מסמן שהלחצן נלחץ
+}
+
+void setup() {
+  attachInterrupt(digitalPinToInterrupt(buttonPin), buttonInterrupt, FALLING);
+}
