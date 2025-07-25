@@ -32,4 +32,5 @@ WiFiClient client;
 volatile bool buttonPressed = false;
 unsigned long lastDebounceTime = 0;
 const unsigned long debounceDelay = 50;
-
+// JSON buffer
+StaticJsonDocument<200> doc;
