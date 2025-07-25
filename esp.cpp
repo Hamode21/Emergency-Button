@@ -121,3 +121,10 @@ void loop() {
         buttonPressed = false;
     }
     
+    // Maintain WebSocket connection
+    if (!wsClient.isConnected()) {
+        wsClient.begin(ws_host, ws_port, ws_path);
+    }
+    wsClient.loop();
+}
+    
