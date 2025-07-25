@@ -56,3 +56,8 @@ void blinkLedSlow() {
     digitalWrite(ledPin, LOW);
   }
 }
+void activateBuzzer() {
+  tone(buzzerPin, buzzerTone);
+  buzzerTone += buzzerStep; 
+  if (buzzerTone >= 2000) buzzerDirection = false;
+}
