@@ -111,3 +111,13 @@ void loop() {
             sendStatus();
         }
     });
+ // Handle button press
+    if (buttonPressed && currentState != DISTRESS) {
+        currentState = DISTRESS;
+        normalBlinkTimer.detach();
+        distressBlinkTimer.attach_ms(200, distressBlink); // Fast blinking
+        buzzerTimer.attach_ms(100, buzzerSound); // Start buzzer
+        sendStatus();
+        buttonPressed = false;
+    }
+    
