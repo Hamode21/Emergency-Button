@@ -62,4 +62,15 @@ void buzzerSound() {
         tone(buzzerPin, buzzerFreq);
     }
 }
+void sendStatus() {
+    doc.clear();
+    doc["device_id"] = device_id;
+    doc["status"] = currentState == DISTRESS ? "distress" : 
+                    currentState == PENDING ? "pending" : "normal";
+    
+    String json;
+    serializeJson(doc, json);
+    wsClient.sendData(json);
+}
+
 
