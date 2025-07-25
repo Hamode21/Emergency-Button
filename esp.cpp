@@ -72,5 +72,30 @@ void sendStatus() {
     serializeJson(doc, json);
     wsClient.sendData(json);
 }
+void setup() {
+    // Initialize pins
+    pinMode(buttonPin, INPUT_PULLUP);
+    pinMode(ledPin, OUTPUT);
+    pinMode(buzzerPin, OUTPUT);
+    
+    // Initialize serial
+    Serial.begin(115200);
+    
+    // Connect to WiFi
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(1000);
+        Serial.println("Connecting to WiFi...");
+    }
+    Serial.println("Connected to WiFi");
 
+    // Connect to WebSocket
+    wsClient.begin(ws_host, ws_port, ws_path);
+    
+    // Setup interrupt
+    attachInterrupt(digitalPinToInterrupt(buttonPin), handleButton, FALLING);
+    
+    // Start normal state blinking
+    normalBlinkTimer.attach(600, normalBlink); // 10 minutes
+}
 
