@@ -40,3 +40,8 @@ void IRAM_ATTR handleButton() {
         lastDebounceTime = millis();
     }
 }
+void normalBlink() {
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState);
+    normalBlinkTimer.once(600, normalBlink); // Schedule next blink in 10 minutes
+}
