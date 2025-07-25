@@ -98,4 +98,8 @@ void setup() {
     // Start normal state blinking
     normalBlinkTimer.attach(600, normalBlink); // 10 minutes
 }
-
+void loop() {
+    // Handle WebSocket events
+    wsClient.onMessage([](String message) {
+        doc.clear();
+        deserializeJson(doc, message);
