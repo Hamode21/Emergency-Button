@@ -28,5 +28,8 @@ int buzzerFreq = 500;
 // WebSocket client
 WebSocketClient wsClient;
 WiFiClient client;
-
+// Button pressed
+volatile bool buttonPressed = false;
+unsigned long lastDebounceTime = 0;
+const unsigned long debounceDelay = 50;
 
