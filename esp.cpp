@@ -61,3 +61,7 @@ void activateBuzzer() {
   buzzerTone += buzzerStep; 
   if (buzzerTone >= 2000) buzzerDirection = false;
 }
+void sendStatusUpdate() {
+  String payload = "{\"device_id\":\"button1\",\"status\":\"" + String(currentState) + "\"}";
+  client.publish("emergency/alert", payload.c_str());
+}
