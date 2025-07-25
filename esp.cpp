@@ -103,3 +103,11 @@ void loop() {
     wsClient.onMessage([](String message) {
         doc.clear();
         deserializeJson(doc, message);
+    if (doc["command"] == "cancel" && currentState == DISTRESS) {
+            currentState = PENDING;
+            noTone(buzzerPin);
+            distressBlinkTimer.detach();
+            digitalWrite(ledPin, LOW);
+            sendStatus();
+        }
+    });
