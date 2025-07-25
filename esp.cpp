@@ -29,3 +29,8 @@ void IRAM_ATTR buttonInterrupt() {
 void setup() {
   attachInterrupt(digitalPinToInterrupt(buttonPin), buttonInterrupt, FALLING);
 }
+
+if (buttonPressed && currentState == NORMAL) {
+  currentState = EMERGENCY;
+  sendAlert(); 
+}
