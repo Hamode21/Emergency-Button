@@ -49,4 +49,17 @@ void distressBlink() {
     ledState = !ledState;
     digitalWrite(ledPin, ledState);
 }
+void buzzerSound() {
+    static bool ascending = true;
+    if (currentState == DISTRESS) {
+        if (ascending) {
+            buzzerFreq += 50;
+            if (buzzerFreq >= 2000) ascending = false;
+        } else {
+            buzzerFreq -= 50;
+            if (buzzerFreq <= 500) ascending = true;
+        }
+        tone(buzzerPin, buzzerFreq);
+    }
+}
 
